@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e ':*)",
+      "Bash(grep -E \"\\\\.php$\")",
+      "Bash(git config:*)",
+      "Bash(git last-commit:*)",
+      "Bash(grep -E \"\\\\.\\(js|jsx|ts|tsx\\)$\")",
+      "Bash(gh gist:*)",
+      "Bash(gh repo:*)",
+      "Bash(git clone:*)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\ronys\\AppData\\Local\\Temp\\cli-command"
+    ]
+  }
+}
