@@ -4,7 +4,7 @@ Run a comprehensive PR review on the current branch by launching 3 parallel agen
 
 ## Step 0: Load Project Context
 
-Check if `.claude/context.yaml` exists. If yes, read it silently — use it to understand the project's tech stack, conventions, structure, and workflow throughout this command. Do NOT print or summarize it. If the file does not exist, skip this step.
+`CLAUDE.md` at the project root is automatically loaded by Claude Code. Use it to understand the project's tech stack, conventions, structure, and workflow throughout this command. Do NOT print or summarize it.
 
 ## Instructions
 
