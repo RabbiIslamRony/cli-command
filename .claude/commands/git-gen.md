@@ -148,8 +148,7 @@ Rules:
 
 ```markdown
 ## PR Type
-What kind of change does this PR introduce?
-<!-- Mark completed items with an [x] based on the Change Type from Step 1 -->
+<!-- Mark completed items with an [x] -->
 - [ ] Bugfix
 - [ ] Security fix
 - [ ] Improvement
@@ -159,12 +158,40 @@ What kind of change does this PR introduce?
 - [ ] Text changes
 - [ ] Other... Please describe:
 
-## Description
-How to reproduce the issue or how to test the changes
+## Summary
+<!-- 1-2 sentences: what this PR does and why -->
+[Fill from Agent 3 — one-line summary of what this PR delivers and the motivation behind it]
 
-1. [Fill from Agent 3 impact analysis — what to test]
-2. [Fill from Agent 1 change analysis — specific steps]
-3. [Fill from Agent 1 — expected result]
+## What Changed
+
+### Function Changes
+<!-- Backend logic, PHP handlers, data processing, API changes -->
+- [Fill from Agent 1 — each core logic change as a concise bullet]
+
+### UX Changes
+<!-- Behavior, interaction, accessibility, responsiveness -->
+- [Fill from Agent 3 — each user-facing behavior/interaction change as a concise bullet]
+
+### UI Changes
+<!-- Visual, style, CSS, layout changes -->
+- [Fill from Agent 1 — each style/visual/layout change as a concise bullet]
+
+## Files Changed
+<!-- Group by type, source files only — skip compiled outputs like assets/css/*.css, assets/js/*.js -->
+
+**PHP**
+- `path/to/file.php` — [one-line reason]
+
+**JavaScript**
+- `path/to/file.js` — [one-line reason]
+
+**SCSS / CSS**
+- `path/to/file.scss` — [one-line reason]
+
+## How to Test
+1. [Fill from Agent 3 — setup/precondition step]
+2. [Fill from Agent 1 — action step that exercises the change]
+3. [Fill from Agent 1/3 — expected result to verify]
 
 ## Any linked issues
 Fixes #[Fill from Step 1 ticket reference, or leave blank]
@@ -175,7 +202,7 @@ Fixes #[Fill from Step 1 ticket reference, or leave blank]
 ```
 
 **Template Rules:**
-- Mark the correct PR Type checkbox with `[x]` based on the user's Change Type selection from Step 1:
+- **PR Type**: Mark the correct checkbox with `[x]` based on the user's Change Type selection from Step 1:
   - Bug fix → `[x] Bugfix`
   - Security fix → `[x] Security fix`
   - Improvement/enhancement → `[x] Improvement`
@@ -184,10 +211,15 @@ Fixes #[Fill from Step 1 ticket reference, or leave blank]
   - Build/config → `[x] Build related changes`
   - Style/UI → `[x] Improvement`
   - Documentation → `[x] Text changes`
-- Fill the Description steps from what agents discovered about the changes
-- If agents found specific test steps, use those. Otherwise write clear steps based on what changed.
-- If no linked issue, keep `Fixes #` with nothing after it (leave blank)
-- ALWAYS keep the Checklist section as-is
+- **Summary**: 1-2 sentences from Agent 3. First sentence = what changed. Second (optional) = why. Do NOT repeat the PR title.
+- **Function Changes**: From Agent 1 core logic changes. Each bullet starts with a verb (Add, Update, Fix, Remove). If none → write "No function changes."
+- **UX Changes**: From Agent 3 user-facing behavior analysis. Describe what the user experiences differently. If none → write "No UX changes."
+- **UI Changes**: From Agent 1 style/supporting changes. Reference visual outcomes (e.g., "Fix popover alignment on mobile" not "Update CSS"). If none → write "No UI changes."
+- **Files Changed**: From Agent 1 git diff. Group by file type (PHP/JS/SCSS/Other). Each file gets a 1-line reason after em-dash. Omit empty groups. Omit compiled build outputs (`assets/css/*.css`, `assets/js/*.js`) — only list source files.
+- **How to Test**: 3-5 numbered steps from Agent 3. Setup → action → expected result.
+- **Linked Issues**: From Step 1 ticket. If none, keep `Fixes #` with nothing after it.
+- **Checklist**: ALWAYS keep as-is. Never modify.
+- **General**: Max 1 line per bullet, no sub-bullets. Imperative mood. Keep total PR description under 60 lines. No code snippets in PR body.
 
 ## Step 4: User Selection
 
@@ -200,13 +232,28 @@ Options:
 - "I want to edit some"
 - "Regenerate with different focus"
 
-After the user confirms their selections (or uses as-is), ask:
+After the user confirms their selections (or uses as-is), **save the final selections to `.claude/git-smart-output.json`** using the Write tool:
+
+```json
+{
+  "branch_name": "<selected branch name>",
+  "commit_message": "<selected full commit message including body>",
+  "pr_title": "<selected PR title>",
+  "pr_description": "<selected PR description - full markdown>",
+  "change_type": "<change type from Step 1>",
+  "timestamp": "<current ISO timestamp>"
+}
+```
+
+This file allows `/ship` to pick up the output even in a different session.
+
+Then ask:
 
 "Apnar hoye ki ami ai changes gula apply korbo? (git add, format, commit, branch, push)"
 
 Options:
 - **Yes** — Proceed with the full apply workflow (Step 5 below)
-- **No** — Stop here. The generated names are saved in conversation context. User can run `/git-apply` later to apply them.
+- **No** — Stop here. Output saved to `.claude/git-smart-output.json`. User can run `/ship` later to apply them.
 
 ## Step 5: Apply Workflow (only if user said Yes in Step 4)
 
