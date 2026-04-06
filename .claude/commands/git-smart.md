@@ -199,14 +199,68 @@ Options:
 - "Use all as-is"
 - "I want to edit some"
 - "Regenerate with different focus"
-- "Apply and create commit/PR now"
 
-If "Apply and create commit/PR now":
-1. Stage changes: `git add <relevant files>` (NOT `git add .`)
-2. Create commit with the selected message
-3. Push branch if needed
-4. Create PR with `gh pr create` using selected title and description
-5. Return the PR URL
+After the user confirms their selections (or uses as-is), ask:
+
+"Apnar hoye ki ami ai changes gula apply korbo? (git add, format, commit, branch, push)"
+
+Options:
+- **Yes** — Proceed with the full apply workflow (Step 5 below)
+- **No** — Stop here. The generated names are saved in conversation context. User can run `/git-apply` later to apply them.
+
+## Step 5: Apply Workflow (only if user said Yes in Step 4)
+
+Execute these steps sequentially. Ask the user at each QA checkpoint.
+
+### 5.1 — Stage all changes
+```bash
+git add .
+```
+
+### 5.2 — Format code (QA checkpoint)
+Ask the user: "yarn format & composer format run korbo?"
+- If **Yes**: Run `yarn format` first, then `composer format`
+- If **No**: Skip to 5.3
+- If either command fails, show the error and ask the user how to proceed
+
+### 5.3 — Re-stage after formatting
+Run `git status` to check if formatting created new changes.
+- If there are new changes: run `git add .`
+- If there are unexpected issues: ask the user before proceeding
+
+### 5.4 — Commit
+Use the commit message selected/confirmed in Step 4.
+```bash
+git commit -m "<selected commit message>"
+```
+
+### 5.5 — Create branch
+Create a new branch using the branch name selected in Step 4:
+```bash
+git checkout -b <selected-branch-name>
+```
+If the branch already exists, ask the user whether to switch to it or pick a different name.
+
+### 5.6 — Push to remote (QA checkpoint)
+First, list available remotes and remote branches:
+```bash
+git remote -v
+git branch -r
+```
+
+Ask the user:
+"Kon remote branch-e push korbo? Nicher theke select koro ba custom deo."
+
+Show options based on detected remotes (e.g., `origin/<branch-name>`, other remotes if they exist).
+Options should include:
+- Push to `origin/<current-branch-name>` (default)
+- Push to a different remote
+- Don't push now
+
+If user selects a remote:
+```bash
+git push -u <remote> <branch-name>
+```
 
 ## Important Rules
 
