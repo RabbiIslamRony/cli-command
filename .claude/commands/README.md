@@ -31,7 +31,7 @@ Type `/` in Claude Code to see all commands.
 
 | Command | What it does |
 |---------|---------|
-| `/context` | Auto-scans your project to extract tech stack, structure, workflow, and conventions. Saves everything to `.claude/context.yaml`. All other commands automatically use this context. |
+| `/context` | Auto-scans your project to extract tech stack, structure, workflow, and conventions. Generates `CLAUDE.md` at the project root — automatically loaded by Claude Code in every conversation. |
 
 ### Planning & Design
 

@@ -77,7 +77,7 @@ Every command should follow this pattern:
 What this command does (1-2 sentences).
 
 ## Instructions
-1. Load context — Read `.claude/context.yaml` if available
+1. Load context — Uses `CLAUDE.md` (auto-loaded by Claude Code)
 2. Gather input — Ask the user what they need
 3. Analyze — Run analysis agents in parallel where possible
 4. Output — Generate clear, actionable results

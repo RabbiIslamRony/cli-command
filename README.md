@@ -35,7 +35,7 @@ cp -r cli-command/.claude/commands/ ~/.claude/commands/
 
 | Command | Description |
 |---------|-------------|
-| `/context` | Auto-scan project to extract tech stack, structure, and conventions. Saves to `.claude/context.yaml` for other commands to use. |
+| `/context` | Auto-scan project to extract tech stack, structure, and conventions. Generates `CLAUDE.md` — automatically loaded by Claude Code in every conversation. |
 | `/plan` | Analyze codebase and create a feature implementation plan with architecture, dependencies, and risk assessment. |
 
 ### Design
@@ -112,7 +112,7 @@ cp -r cli-command/.claude/commands/ ~/.claude/commands/
 Each command is a markdown prompt file in `.claude/commands/`. When you type `/command-name` in Claude Code, it loads the corresponding `.md` file as instructions.
 
 Commands follow a consistent pattern:
-1. **Load context** — Reads `.claude/context.yaml` if available
+1. **Load context** — Uses `CLAUDE.md` (auto-loaded by Claude Code)
 2. **Gather requirements** — Asks targeted questions via interactive prompts
 3. **Parallel analysis** — Launches multiple analysis agents simultaneously for speed
 4. **Generate output** — Synthesizes findings into actionable results
