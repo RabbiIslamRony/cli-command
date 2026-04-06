@@ -1,6 +1,12 @@
 # Claude Code Custom Commands
 
+[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-blue.svg)](https://github.com/RabbiIslamRony/cli-command/pulls)
+
 A collection of powerful AI-powered slash commands for [Claude Code](https://docs.anthropic.com/en/docs/claude-code). Boost your development workflow with smart planning, code review, git automation, debugging, and more.
+
+> **Open source & community-driven** — contributions, new commands, and improvements are always welcome!
 
 ## Installation
 
@@ -126,6 +132,80 @@ This repo also includes handy reference guides:
 - [git-aliases.md](git-aliases.md) — Useful git aliases for everyday shortcuts
 - [github-commands.md](github-commands.md) — Comprehensive GitHub CLI & Git command reference
 
+---
+
+## Contributing
+
+We love contributions! Whether you want to add a new command, improve an existing one, fix a bug, or enhance documentation — you're welcome here.
+
+### Quick Start
+
+```sh
+# 1. Fork & clone
+gh repo fork RabbiIslamRony/cli-command --clone
+cd cli-command
+
+# 2. Branch from development
+git checkout development
+git checkout -b feature/your-feature
+
+# 3. Make changes & test locally
+
+# 4. Submit PR → development branch
+gh pr create --base development
+```
+
+> **All PRs must target the `development` branch.** PRs to `main` will be rejected.
+
+### Ways to Contribute
+
+| Contribution | Description |
+| ------------- | ------------- |
+| **New Command** | Create a `.md` file in `.claude/commands/` — it becomes a slash command |
+| **Improve Command** | Make an existing command smarter, faster, or more accurate |
+| **Reference Guide** | Add a new cheat sheet or reference doc |
+| **Bug Fix** | Found something broken? Fix it and submit a PR |
+| **Documentation** | Improve README, add examples, fix typos |
+| **Ideas** | [Open an issue](https://github.com/RabbiIslamRony/cli-command/issues/new) with your suggestion |
+
+### Adding a New Command
+
+1. Create `.claude/commands/your-command.md`
+2. Follow the existing command structure (load context → analyze → output)
+3. Test locally by typing `/your-command` in Claude Code
+4. Add it to the command table in this README
+5. Submit a PR
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines, commit conventions, and more.
+
+---
+
+## Community
+
+- **Issues** — [Report bugs or request features](https://github.com/RabbiIslamRony/cli-command/issues)
+- **Discussions** — Share ideas, ask questions, show what you've built
+- **Stars** — If this project helps you, give it a star to help others find it
+
+### Good First Issues
+
+New to the project? Look for issues labeled [`good first issue`](https://github.com/RabbiIslamRony/cli-command/labels/good%20first%20issue) — these are beginner-friendly tasks perfect for your first contribution.
+
+---
+
+## Contributors
+
+Thanks to everyone who has contributed to this project!
+
+<!-- Contributors will be listed here as they contribute -->
+
+[![Contributors](https://contrib.rocks/image?repo=RabbiIslamRony/cli-command)](https://github.com/RabbiIslamRony/cli-command/graphs/contributors)
+
+---
+
 ## License
 
-MIT
+MIT — see [LICENSE](LICENSE) for details.
+
+## Code of Conduct
+
+Please read our [Code of Conduct](CODE_OF_CONDUCT.md) before contributing. We want this to be a welcoming space for everyone.

@@ -1,0 +1,25 @@
+name: PR Target Branch Check
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize]
+
+jobs:
+  check-target:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify PR targets development branch
+        if: github.event.pull_request.base.ref != 'development'
+        run: |
+          echo "❌ ERROR: PRs must target the 'development' branch."
+          echo ""
+          echo "Current target: ${{ github.event.pull_request.base.ref }}"
+          echo "Required target: development"
+          echo ""
+          echo "Please update your PR base branch to 'development'."
+          exit 1
+
+      - name: Target branch is correct
+        if: github.event.pull_request.base.ref == 'development'
+        run: |
+          echo "✅ PR correctly targets the 'development' branch."
