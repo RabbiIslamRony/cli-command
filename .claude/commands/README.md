@@ -29,97 +29,97 @@ Type `/` in Claude Code to see all commands.
 
 ### Context
 
-| Command | Ki kore |
+| Command | What it does |
 |---------|---------|
-| `/context` | Project auto-scan kore tech stack, structure, workflow, conventions extract kore `.claude/context.yaml` e save kore. Baki sob command automatically ei context use kore. |
+| `/context` | Auto-scans your project to extract tech stack, structure, workflow, and conventions. Saves everything to `.claude/context.yaml`. All other commands automatically use this context. |
 
 ### Planning & Design
 
-| Command | Ki kore |
+| Command | What it does |
 |---------|---------|
-| `/plan` | Codebase analyze kore feature implementation plan banay. Architecture, dependencies, risks — sob dekhay. |
-| `/design` | Figma URL, screenshot, ba image theke pixel-perfect code generate kore. Colors, spacing, responsive — sob handle kore. |
+| `/plan` | Analyzes codebase and creates a feature implementation plan. Covers architecture, dependencies, and risks. |
+| `/design` | Generates pixel-perfect code from a Figma URL, screenshot, or image. Handles colors, spacing, responsive layout, and accessibility. |
 
 ### Git & PR Workflow
 
-| Command | Ki kore |
+| Command | What it does |
 |---------|---------|
-| `/git-gen` | Current changes analyze kore commit message, branch name, PR title & description generate kore. Project conventions follow kore. |
-| `/pr-gen` | Specific commit hash ba running changes theke PR title + description generate kore export kore. Quick PR description lagle ei ta use koro. |
-| `/ship` | `/git-gen` ba `/pr-gen` er output niye stage, format, commit, branch create & push kore dey. Full workflow. |
-| `/push` | Quick push — stage, auto commit message, push. No formatting, no PR, no extra steps. Fast commit & push. |
+| `/git-gen` | Analyzes current changes and generates commit message, branch name, PR title & description. Follows project conventions. |
+| `/pr-gen` | Generates PR title + description from specific commit hashes or current changes. Use this when you just need a quick PR description. |
+| `/ship` | Takes `/git-gen` or `/pr-gen` output and runs the full workflow — stage, format, commit, create branch & push. |
+| `/push` | Quick push — stage, auto-generate commit message, push. No formatting, no PR, no extra steps. |
 
 ### Code Quality
 
-| Command | Ki kore |
+| Command | What it does |
 |---------|---------|
-| `/review` | Current branch er changes review kore — code quality, security (XSS, SQL injection, nonce), ar UX (a11y, responsive, i18n). |
-| `/check` | Merge korar age last validation — PHP syntax, SCSS, JS, template integrity, build status. PASS/FAIL report dey. |
-| `/simplify` | Changed code review kore reuse, quality, ar efficiency improve kore. |
+| `/review` | Reviews current branch changes — code quality, security (XSS, SQL injection, nonce validation), and UX (accessibility, responsive, i18n). |
+| `/check` | Final validation before merge — PHP syntax, SCSS, JS, template integrity, build status. Returns a PASS/FAIL report. |
+| `/simplify` | Reviews changed code for reuse opportunities, quality improvements, and efficiency gains. |
 
 ### Refactoring & Performance
 
-| Command | Ki kore |
+| Command | What it does |
 |---------|---------|
-| `/refactor` | Code smells detect kore (duplication, dead code, deep nesting) ar safely modernize kore. |
-| `/perf` | Speed audit — DB queries, frontend bundle, caching, AJAX performance analyze kore quick wins suggest kore. |
-| `/bugfix` | Full bug fix — bug info ney, investigate kore, security/standards/edge-case validate kore, then fix apply kore. End-to-end. |
-| `/debug` | Bug er root cause trace kore — error logs, git blame, dependencies sob check kore report dey. |
+| `/refactor` | Detects code smells (duplication, dead code, deep nesting) and safely modernizes the code. |
+| `/perf` | Speed audit — analyzes DB queries, frontend bundle, caching, and AJAX performance. Suggests quick wins. |
+| `/bugfix` | Full bug fix lifecycle — investigates the issue, validates against security/standards/edge-cases, then applies the fix. |
+| `/debug` | Traces bug root cause — checks error logs, git blame, and dependencies. Returns an evidence-based report. |
 
 ### Build & Release
 
-| Command | Ki kore |
+| Command | What it does |
 |---------|---------|
-| `/build` | Build system (Webpack, Vite, Gulp) diagnose ar optimize kore — bundle size, deps, CSS pipeline. |
-| `/release` | Version bump, changelog generate, release notes — full release process manage kore. |
+| `/build` | Diagnoses and optimizes build system (Webpack, Vite, Gulp) — bundle size, dependencies, CSS pipeline. |
+| `/release` | Manages the full release process — version bump, changelog generation, and release notes. |
 
 ---
 
 ## Typical Workflow
 
 ```text
-/context   -- Project context extract koro (first time only)
-/plan      -- Feature plan koro
-  code...  -- Code likho
-/pr-gen    -- PR description generate koro (specific commits theke)
-/review    -- Code review koro
-  fix...   -- Review feedback fix koro
-/check     -- Last validation
-/ship      -- Commit, branch, push koro
-/release   -- Release ready hole version bump koro
+/context   ← Extract project context (first time only)
+/plan      ← Plan your feature
+  code...  ← Write the code
+/pr-gen    ← Generate PR description (from specific commits)
+/review    ← Review your changes
+  fix...   ← Address review feedback
+/check     ← Final validation
+/ship      ← Commit, branch, push
+/release   ← Version bump when ready to release
 ```
 
 ### Quick Scenarios
 
-PR banate chai:
+**Creating a PR:**
 
 ```text
-/git-gen   -- Everything generate kore (branch + commit + PR)
+/git-gen   ← Generates everything (branch + commit + PR)
 ```
 
-Specific commits er PR description chai:
+**PR description from specific commits:**
 
 ```text
-/pr-gen    -- Commit hash dile shudhu PR title + description dey
+/pr-gen    ← Give it commit hashes, get PR title + description
 ```
 
-Merge korar age check:
+**Pre-merge check:**
 
 ```text
-/check     -- Sob file validate kore PASS/FAIL report dey
+/check     ← Validates all files, returns PASS/FAIL report
 ```
 
-Performance slow lagche:
+**Performance feels slow:**
 
 ```text
-/perf      -- Bottleneck khuje quick wins suggest kore
+/perf      ← Finds bottlenecks, suggests quick wins
 ```
 
 ---
 
 ## Add Your Own Command
 
-1. `.claude/commands/` folder-e notun `.md` file create koro
-2. Markdown-e instructions likho — Claude Code prompt hishebe follow korbe
-3. Filename (without `.md`) = command name
-4. `/your-command` diye run koro
+1. Create a new `.md` file in `.claude/commands/`
+2. Write your instructions in markdown — Claude Code will follow them as a prompt
+3. The filename (without `.md`) becomes the command name
+4. Run it with `/your-command`

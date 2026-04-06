@@ -2,7 +2,12 @@
   "permissions": {
     "allow": [
       "Bash(xargs grep:*)",
-      "Bash(python3 -c ':*)"
+      "Bash(python3 -c ':*)",
+      "Bash(echo \"---EXIT:$?---\")",
+      "Bash(grep -E '\\\\.\\(json|yml|yaml|toml|md\\)$')",
+      "Bash(wc -l /d/cli-command/.claude/commands/*.md)",
+      "Bash(ls -la /d/cli-command/.claude/settings*)",
+      "Bash(xargs wc:*)"
     ]
   }
 }

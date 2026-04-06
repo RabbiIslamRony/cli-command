@@ -811,4 +811,6 @@ gh release create v1.0.0 --generate-notes
 
 ---
 
-*Maintained by Rony — last updated 2026*
+---
+
+> **Tip:** Run `gh help <command>` for detailed usage info on any GitHub CLI command.

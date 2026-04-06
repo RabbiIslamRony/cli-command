@@ -84,24 +84,14 @@ git last-commit   # formatted view:
 
 ---
 
-## Remotes — directorist project
+## Team remotes (example)
 
-### Add all team remotes (run once per repo clone)
+If your team works on forks, add all team remotes at once with a single alias:
 
 ```sh
-git config --global alias.addremotes '!git remote add arman https://github.com/Armanul46/directorist.git \
-  && git remote add galib https://github.com/syedgalib/directorist \
-  && git remote add mehedi https://github.com/HeyMehedi/directorist \
-  && git remote add nazmul https://github.com/nazmulhasan103/directorist.git \
-  && git remote add obi https://github.com/obiPlabon/directorist \
-  && git remote add origin https://github.com/RabbiIslamRony/directorist.git \
-  && git remote add rafiq https://github.com/vairafiq/directorist \
-  && git remote add riaz https://github.com/iamibrahimriaz/directorist/ \
-  && git remote add shamim https://github.com/devShamim/directorist \
-  && git remote add sovware https://github.com/sovware/directorist.git \
-  && git remote add tanjim https://github.com/tanjimhasan/directorist \
-  && git remote add upstream https://github.com/sovware/directorist.git \
-  && git remote add github-desktop-woadudakand https://github.com/woadudakand/directorist.git'
+git config --global alias.addremotes '!git remote add alice https://github.com/alice/project.git \
+  && git remote add bob https://github.com/bob/project.git \
+  && git remote add upstream https://github.com/org/project.git'
 ```
 
 Then run:
@@ -113,54 +103,9 @@ git addremotes
 ### Fetch from a specific team member
 
 ```sh
-git fetch mehedi                           # fetch only
-git pull mehedi main                       # fetch + merge their main branch
+git fetch alice                            # fetch only
+git pull alice main                        # fetch + merge their main branch
 git fetch upstream && git m upstream/main  # sync with upstream
-```
-
----
-
-## Clone — sovware repos
-
-### Themes
-
-```sh
-git clone https://github.com/sovware/wpwax-theme.git \
-  && git clone https://github.com/sovware/formgent-theme.git \
-  && git clone https://github.com/sovware/dir-theme.git
-```
-
-### Listing themes (SSH)
-
-```sh
-for repo in dhotels dclassified onelisting dplace drestaurant drealestate dcar dlist directoria ddoctors dlawyers djobs dcourse direo dservice best-listing; do
-  git clone git@github.com:sovware/$repo.git
-done
-```
-
-### Directorist core + extensions (SSH)
-
-```sh
-git clone git@github.com:sovware/directorist.git \
-  && git clone git@github.com:sovware/directorist-adverts-manager.git \
-  && git clone git@github.com:sovware/directorist-booking.git \
-  && git clone git@github.com:sovware/directorist-business-hours.git \
-  && git clone git@github.com:sovware/directorist-claim-listing.git \
-  && git clone git@github.com:sovware/directorist-compare-listing.git \
-  && git clone git@github.com:sovware/directorist-coupon.git \
-  && git clone git@github.com:sovware/directorist-faqs.git \
-  && git clone git@github.com:sovware/directorist-live-chat.git \
-  && git clone git@github.com:sovware/directorist-mark-as-sold.git \
-  && git clone git@github.com:sovware/directorist-paypal.git \
-  && git clone git@github.com:sovware/directorist-post-your-need.git \
-  && git clone git@github.com:sovware/directorist-pricing-plans.git \
-  && git clone git@github.com:sovware/directorist-rank-featured-listings.git \
-  && git clone git@github.com:sovware/directorist-social-login.git \
-  && git clone git@github.com:sovware/directorist-stripe.git \
-  && git clone git@github.com:sovware/directorist-google-recaptcha.git \
-  && git clone git@github.com:sovware/directorist-listings-with-map.git \
-  && git clone git@github.com:sovware/directorist-search-popup-block \
-  && git clone git@github.com:sovware/directorist-account-block
 ```
 
 ---
@@ -200,4 +145,6 @@ git ps
 
 ---
 
-*Maintained by Rony — last updated 2026*
+---
+
+> **Tip:** Customize these aliases to match your workflow. Run `git gl` anytime to review your current aliases.
