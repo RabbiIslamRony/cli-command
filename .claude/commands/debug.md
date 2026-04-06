@@ -2,6 +2,10 @@
 
 Trace bugs, errors, and unexpected behavior to their root cause. Works with any project — PHP, JS, WordPress, React, Node.js, or any stack.
 
+## Step 0: Load Project Context
+
+Check if `.claude/context.yaml` exists. If yes, read it silently — use it to understand the project's tech stack, conventions, structure, and workflow throughout this command. Do NOT print or summarize it. If the file does not exist, skip this step.
+
 ## Step 1: Gather Bug Details
 
 Use AskUserQuestion to collect info. Do NOT skip.

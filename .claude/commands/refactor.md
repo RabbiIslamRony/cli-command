@@ -2,6 +2,10 @@
 
 Detect code smells, DRY violations, legacy patterns, and safely refactor without breaking existing functionality. Works with any codebase.
 
+## Step 0: Load Project Context
+
+Check if `.claude/context.yaml` exists. If yes, read it silently — use it to understand the project's tech stack, conventions, structure, and workflow throughout this command. Do NOT print or summarize it. If the file does not exist, skip this step.
+
 ## Step 1: Gather Requirements
 
 Use AskUserQuestion to collect info. Do NOT skip.

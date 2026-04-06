@@ -6,6 +6,7 @@ Type `/` in Claude Code to see all commands.
 
 | Command | What it does |
 |---------|-------------|
+| `/context` | Extract & save project context |
 | `/plan` | Feature plan |
 | `/design` | Design to code |
 | `/git-gen` | Generate commit, branch, PR |
@@ -17,6 +18,7 @@ Type `/` in Claude Code to see all commands.
 | `/simplify` | Code simplification |
 | `/refactor` | Code modernization |
 | `/perf` | Performance audit |
+| `/bugfix` | Full bug fix (investigate + validate + apply) |
 | `/debug` | Bug root cause |
 | `/build` | Build optimization |
 | `/release` | Version bump & changelog |
@@ -24,6 +26,12 @@ Type `/` in Claude Code to see all commands.
 ---
 
 ## All Commands
+
+### Context
+
+| Command | Ki kore |
+|---------|---------|
+| `/context` | Project auto-scan kore tech stack, structure, workflow, conventions extract kore `.claude/context.yaml` e save kore. Baki sob command automatically ei context use kore. |
 
 ### Planning & Design
 
@@ -55,6 +63,7 @@ Type `/` in Claude Code to see all commands.
 |---------|---------|
 | `/refactor` | Code smells detect kore (duplication, dead code, deep nesting) ar safely modernize kore. |
 | `/perf` | Speed audit — DB queries, frontend bundle, caching, AJAX performance analyze kore quick wins suggest kore. |
+| `/bugfix` | Full bug fix — bug info ney, investigate kore, security/standards/edge-case validate kore, then fix apply kore. End-to-end. |
 | `/debug` | Bug er root cause trace kore — error logs, git blame, dependencies sob check kore report dey. |
 
 ### Build & Release
@@ -69,6 +78,7 @@ Type `/` in Claude Code to see all commands.
 ## Typical Workflow
 
 ```text
+/context   -- Project context extract koro (first time only)
 /plan      -- Feature plan koro
   code...  -- Code likho
 /pr-gen    -- PR description generate koro (specific commits theke)

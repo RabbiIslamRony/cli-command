@@ -4,7 +4,11 @@ Analyze, diagnose, and optimize any project's build system. Works with any tech 
 
 **First step is ALWAYS to detect the project type and build tools before doing anything else.**
 
-## Step 0: Detect Project Type
+## Step 0: Load Project Context
+
+Check if `.claude/context.yaml` exists. If yes, read it silently — use it to understand the project's tech stack, conventions, structure, and workflow throughout this command. Do NOT print or summarize it. If the file does not exist, skip this step.
+
+## Step 0.1: Detect Project Type
 
 Before asking questions, automatically scan the project:
 - Check for `package.json`, `composer.json`, `Cargo.toml`, `go.mod`, `Makefile`, `Dockerfile`

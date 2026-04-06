@@ -2,6 +2,10 @@
 
 Convert a reference design (Figma, screenshot, image URL) into pixel-perfect code by gathering requirements from the user and launching specialized agents.
 
+## Step 0: Load Project Context
+
+Check if `.claude/context.yaml` exists. If yes, read it silently — use it to understand the project's tech stack, conventions, structure, and workflow throughout this command. Do NOT print or summarize it. If the file does not exist, skip this step.
+
 ## Step 1: Gather Information from User
 
 Before starting any work, ask the user the following questions using the AskUserQuestion tool. Do NOT skip this step.

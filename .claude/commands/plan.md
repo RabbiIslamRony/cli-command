@@ -2,6 +2,10 @@
 
 Before writing any code, deeply analyze the project and create the best possible implementation plan. This command gathers requirements from the user, studies the codebase architecture, and delivers a detailed action plan with improvement suggestions.
 
+## Step 0: Load Project Context
+
+Check if `.claude/context.yaml` exists. If yes, read it silently — use it to understand the project's tech stack, conventions, structure, and workflow throughout this command. Do NOT print or summarize it. If the file does not exist, skip this step.
+
 ## Step 1: Gather Feature Requirements
 
 Use AskUserQuestion to collect info from the user. Do NOT skip any question.

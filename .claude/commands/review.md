@@ -2,6 +2,10 @@
 
 Run a comprehensive PR review on the current branch by launching 3 parallel agents.
 
+## Step 0: Load Project Context
+
+Check if `.claude/context.yaml` exists. If yes, read it silently — use it to understand the project's tech stack, conventions, structure, and workflow throughout this command. Do NOT print or summarize it. If the file does not exist, skip this step.
+
 ## Instructions
 
 1. First, detect the current branch and the base branch (trunk). Run `git log trunk..HEAD --oneline` and `git diff trunk...HEAD --stat` to understand the scope.

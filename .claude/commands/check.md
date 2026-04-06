@@ -2,6 +2,10 @@
 
 Run a comprehensive final check before deploying or merging. Ensures no errors, no broken code, and everything is production-ready.
 
+## Step 0: Load Project Context
+
+Check if `.claude/context.yaml` exists. If yes, read it silently — use it to understand the project's tech stack, conventions, structure, and workflow throughout this command. Do NOT print or summarize it. If the file does not exist, skip this step.
+
 ## Step 1: Detect Scope
 
 Run `git status` and `git diff trunk...HEAD --stat` to identify all changed files in the current branch.
