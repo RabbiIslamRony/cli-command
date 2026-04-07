@@ -9,7 +9,7 @@ git status
 git diff --stat
 ```
 
-If there are no changes (clean working tree), tell the user "Kono change nai, commit korar kichu nai." and stop.
+If there are no changes (clean working tree), tell the user "No changes found — nothing to commit." and stop.
 
 ## Step 2: Generate Commit Message
 
@@ -33,7 +33,7 @@ Generate a short, meaningful commit message based on:
 
 Show the user the commit message and ask using AskUserQuestion:
 
-"Ei commit message thik ache?"
+"Does this commit message look good?"
 
 - Options:
   - Yes, use this
@@ -59,7 +59,7 @@ git remote -v
 
 Ask the user using AskUserQuestion:
 
-"Kothay push korbo?"
+"Where should I push to?"
 
 - Options:
   - Push to origin/<current-branch> (Recommended)

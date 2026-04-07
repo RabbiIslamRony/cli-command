@@ -24,7 +24,7 @@ Use AskUserQuestion to understand what the user needs. Do NOT skip.
 
 ### Question Set 0 — Project Context (ask if not obvious):
 
-1. **Project Type** — "Ei project ta ki dhoroner?"
+1. **Project Type** — "What type of project is this?"
    - Options:
      - Existing project (already has build system)
      - New project (need to set up build from scratch)
@@ -33,7 +33,7 @@ Use AskUserQuestion to understand what the user needs. Do NOT skip.
 
 ### Question Set 1 — What's the Goal?
 
-1. **Build Task** — "Build system e ki korte chao?"
+1. **Build Task** — "What do you want to do with the build system?"
    - Options:
      - Diagnose build issues (errors, slow build, broken output)
      - Optimize existing build (speed, bundle size, caching)
@@ -41,7 +41,7 @@ Use AskUserQuestion to understand what the user needs. Do NOT skip.
      - Full build audit (complete health check)
    - multiSelect: false
 
-2. **Problem Area** — "Kon area te issue or improvement dorkar?"
+2. **Problem Area** — "Which area needs attention or improvement?"
    - Options:
      - JavaScript bundling (Webpack, Babel, minification)
      - CSS/SCSS compilation (Sass, PostCSS, RTL, minification)
@@ -51,7 +51,7 @@ Use AskUserQuestion to understand what the user needs. Do NOT skip.
      - Everything — full audit
    - multiSelect: true
 
-3. **Urgency** — "Eita ki production blocking?"
+3. **Urgency** — "Is this blocking production?"
    - Options:
      - Yes — build is broken/failing right now
      - No — optimization/improvement for future
@@ -61,10 +61,10 @@ Use AskUserQuestion to understand what the user needs. Do NOT skip.
 
 Only ask these if user selected "Diagnose build issues":
 
-4. **Error Details** — "Build error ta ki? Terminal output share koro."
+4. **Error Details** — "What is the build error? Please share the terminal output."
    - Let the user paste the error message or describe the issue.
 
-5. **When Started** — "Kokhon theke issue hocchhe?"
+5. **When Started** — "When did this issue start?"
    - Options:
      - After a recent code change
      - After updating npm packages
@@ -75,7 +75,7 @@ Only ask these if user selected "Diagnose build issues":
 
 Only ask these if user selected "Optimize existing build":
 
-4. **Current Pain Points** — "Akhon build e ki problem hocchhe?"
+4. **Current Pain Points** — "What problems are you experiencing with the build?"
    - Options:
      - Build is too slow (takes too long)
      - Bundle size is too large
@@ -85,7 +85,7 @@ Only ask these if user selected "Optimize existing build":
      - Hot reload/watch not detecting changes
    - multiSelect: true
 
-5. **Target Metrics** — "Ki achieve korte chao?"
+5. **Target Metrics** — "What do you want to achieve?"
    - Options:
      - Faster dev build (watch mode)
      - Smaller production bundle
@@ -214,7 +214,7 @@ After all agents complete, present:
 
 After presenting the report, ask the user:
 
-"Report dekhle — ki korte chao?"
+"You've seen the report — what would you like to do?"
 
 Options:
 - "Fix critical issues now"

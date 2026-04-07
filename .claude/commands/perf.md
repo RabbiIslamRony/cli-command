@@ -12,7 +12,7 @@ Use AskUserQuestion to collect info. Do NOT skip.
 
 ### Question Set 1 — What's Slow?
 
-1. **Performance Area** — "Kon area te slow feel hocchhe?"
+1. **Performance Area** — "Which area feels slow?"
    - Options:
      - Page load (frontend slow)
      - Admin panel (backend slow)
@@ -20,10 +20,10 @@ Use AskUserQuestion to collect info. Do NOT skip.
      - Database queries (general slowness)
    - multiSelect: true
 
-2. **Specific Page/Action** — "Kon page ba action e slow? URL ba action name bolo."
+2. **Specific Page/Action** — "Which page or action is slow? Please share the URL or action name."
    - Let the user describe the exact page, URL, or user action that's slow.
 
-3. **Scale** — "Roughly koto data ache?"
+3. **Scale** — "Roughly how much data is involved?"
    - Options:
      - Small (< 100 listings/posts)
      - Medium (100-1000)
@@ -32,7 +32,7 @@ Use AskUserQuestion to collect info. Do NOT skip.
 
 ### Question Set 2 — Metrics:
 
-4. **Current Speed** — "Akhon koto slow? Kono measurement ache?"
+4. **Current Speed** — "How slow is it currently? Do you have any measurements?"
    - Options:
      - Very slow (5+ seconds)
      - Slow (2-5 seconds)
@@ -40,7 +40,7 @@ Use AskUserQuestion to collect info. Do NOT skip.
      - Not sure — just feels slow
      - Have specific metrics (user will share)
 
-5. **Target** — "Target speed ki?"
+5. **Target** — "What is your target speed?"
    - Options:
      - As fast as possible
      - Under 1 second
@@ -161,7 +161,7 @@ Analyze AJAX handlers and REST API endpoints:
 
 ## Step 4: Optimize
 
-Ask: "Kon fixes apply korbo?"
+Ask: "Which fixes should I apply?"
 - "Quick wins only"
 - "All optimizations"
 - "Let me pick specific ones"

@@ -12,7 +12,7 @@ Use AskUserQuestion to collect info. Do NOT skip.
 
 ### Question Set 1 — What's Happening?
 
-1. **Bug Type** — "Ki dhoroner issue hocchhe?"
+1. **Bug Type** — "What type of issue are you experiencing?"
    - Options:
      - PHP error/warning/notice (white screen, fatal error, deprecated notice)
      - JavaScript error (console error, broken UI, not working)
@@ -20,11 +20,11 @@ Use AskUserQuestion to collect info. Do NOT skip.
      - Performance issue (slow, timeout, high memory)
    - multiSelect: false
 
-2. **Error Message** — "Error message ta ki? Console/log output share koro."
+2. **Error Message** — "What is the error message? Please share the console/log output."
    - If user provides an error, parse it for: file path, line number, error type, stack trace.
    - If no error message, ask them to describe what happens vs what should happen.
 
-3. **Reproducibility** — "Bug ta ki always hoy naki sometimes?"
+3. **Reproducibility** — "Does the bug happen always or only sometimes?"
    - Options:
      - Always reproducible
      - Sometimes / intermittent
@@ -33,14 +33,14 @@ Use AskUserQuestion to collect info. Do NOT skip.
 
 ### Question Set 2 — Context:
 
-4. **When Started** — "Kokhon theke hocchhe?"
+4. **When Started** — "When did this start happening?"
    - Options:
      - After a recent code change (I know which one)
      - After a recent code change (not sure which)
      - After updating WordPress/PHP/Node
      - Always been there — just noticed now
 
-5. **Environment** — "Kon environment e hocchhe?"
+5. **Environment** — "Which environment is this happening in?"
    - Options:
      - Local development
      - Staging/testing server
@@ -126,7 +126,7 @@ After all agents complete, present:
 
 Ask the user:
 
-"Root cause paowa geche. Fix apply korbo?"
+"Root cause has been identified. Should I apply the fix?"
 
 Options:
 - "Yes — fix it now"

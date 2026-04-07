@@ -13,12 +13,12 @@ Try to find the `/git-gen` output using this priority:
    - PR title (if any)
    - Timestamp of when it was generated
 
-   Ask: "Ei git-gen output use korbo? (Generated: <timestamp>)"
+   Ask: "Should I use this git-gen output? (Generated: <timestamp>)"
    - Options: Yes, use this / No, run /git-gen first
 
 3. **Nothing found** — If neither context nor file exists, ask the user using AskUserQuestion:
 
-   "Git-gen output pawa jacche na. Ki korbo?"
+   "No git-gen output found. What would you like to do?"
    - Options:
      - Run /git-gen first (Recommended) — Stop and tell user to run `/git-gen`
      - I'll provide manually — Ask for commit message and branch name manually via AskUserQuestion
@@ -39,7 +39,7 @@ git status
 
 Ask the user using AskUserQuestion:
 
-"yarn format & composer format run korbo?"
+"Should I run yarn format & composer format?"
 
 - Options:
   - Run both (Recommended)
@@ -81,7 +81,7 @@ git checkout -b <branch-name-from-git-smart>
 
 If the branch already exists, ask the user:
 
-"Ei branch ta already ache. Ki korbo?"
+"This branch already exists. What would you like to do?"
 
 - Options:
   - Switch to it (checkout existing)
@@ -99,7 +99,7 @@ git branch -r --sort=-committerdate | head -20
 
 Ask the user using AskUserQuestion:
 
-"Kon remote-e push korbo?"
+"Which remote should I push to?"
 
 - Show detected remotes as options (e.g., `origin`, `upstream`, etc.)
 - Include options:
@@ -119,7 +119,7 @@ If push fails (e.g., branch exists on remote), show error and ask whether to for
 
 If git-smart output has a PR title and description, ask:
 
-"PR create korbo?"
+"Should I create a PR?"
 
 - Options:
   - Yes, create PR now

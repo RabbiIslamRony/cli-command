@@ -12,7 +12,7 @@ Use AskUserQuestion to collect info. Do NOT skip.
 
 ### Question Set 1 — Release Type:
 
-1. **Release Type** — "Ki dhoroner release?"
+1. **Release Type** — "What type of release is this?"
    - Options:
      - Major (breaking changes, big features) — X.0.0
      - Minor (new features, no breaking changes) — x.X.0
@@ -20,14 +20,14 @@ Use AskUserQuestion to collect info. Do NOT skip.
      - Pre-release (alpha/beta/rc)
    - multiSelect: false
 
-2. **Release From** — "Kon branch theke release hobe?"
+2. **Release From** — "Which branch should the release be from?"
    - Options:
      - Current branch
      - development branch
      - trunk/main
      - Custom branch (I'll specify)
 
-3. **Target** — "Release kothay jabe?"
+3. **Target** — "Where will this release be published?"
    - Options:
      - WordPress.org (plugin repo)
      - GitHub release only
@@ -125,7 +125,7 @@ Create professional release notes:
 
 ## Step 4: Execute Release
 
-Ask: "Shob thik ache? Release proceed korbo?"
+Ask: "Does everything look good? Should I proceed with the release?"
 - "Yes — bump versions and prepare release"
 - "Fix pre-release issues first"
 - "Modify changelog/notes"
