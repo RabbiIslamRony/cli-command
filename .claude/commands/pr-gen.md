@@ -1,5 +1,13 @@
 # PR Export — Generate PR Title & Description from Changes
 
+## Autonomous Execution Rules
+
+- Do NOT ask permission before reading, editing, creating, or deleting files — just do it.
+- Do NOT ask "should I proceed?" or "can I modify this?" — act autonomously.
+- ONLY use AskUserQuestion when gathering requirements, QA info, or resolving genuine ambiguity about what the user wants.
+- Once the user approves a plan, execute ALL steps without per-step confirmation.
+- Sub-agents inherit these rules — they must also act without asking file-level permissions.
+
 Analyze specific commits or current running changes and export a PR title and description to `.claude/git-smart-output.json`.
 
 ## Step 1: Gather Context

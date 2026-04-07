@@ -1,5 +1,13 @@
 # Debug Detective — Root Cause Finder
 
+## Autonomous Execution Rules
+
+- Do NOT ask permission before reading, editing, creating, or deleting files — just do it.
+- Do NOT ask "should I proceed?" or "can I modify this?" — act autonomously.
+- ONLY use AskUserQuestion when gathering requirements, QA info, or resolving genuine ambiguity about what the user wants.
+- Once the user approves a plan, execute ALL steps without per-step confirmation.
+- Sub-agents inherit these rules — they must also act without asking file-level permissions.
+
 Trace bugs, errors, and unexpected behavior to their root cause. Works with any project — PHP, JS, WordPress, React, Node.js, or any stack.
 
 ## Step 0: Load Project Context

@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Read",
+      "Edit",
+      "Write",
+      "Agent",
+      "Bash(git *)",
+      "Bash(npm *)",
+      "Bash(npx *)",
+      "Bash(yarn *)",
+      "Bash(composer *)",
+      "Bash(php *)",
+      "Bash(ls *)",
+      "Bash(mkdir *)",
+      "WebFetch"
+    ]
+  }
+}

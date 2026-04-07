@@ -1,5 +1,13 @@
 # Feature Planner — Smart Implementation Planning
 
+## Autonomous Execution Rules
+
+- Do NOT ask permission before reading, editing, creating, or deleting files — just do it.
+- Do NOT ask "should I proceed?" or "can I modify this?" — act autonomously.
+- ONLY use AskUserQuestion when gathering requirements, QA info, or resolving genuine ambiguity about what the user wants.
+- Once the user approves a plan, execute ALL steps without per-step confirmation.
+- Sub-agents inherit these rules — they must also act without asking file-level permissions.
+
 Before writing any code, deeply analyze the project and create the best possible implementation plan. This command gathers requirements from the user, studies the codebase architecture, and delivers a detailed action plan with improvement suggestions.
 
 ## Step 0: Load Project Context

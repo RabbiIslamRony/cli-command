@@ -1,5 +1,13 @@
 # Release Manager — Version Bump, Changelog & Release Checklist
 
+## Autonomous Execution Rules
+
+- Do NOT ask permission before reading, editing, creating, or deleting files — just do it.
+- Do NOT ask "should I proceed?" or "can I modify this?" — act autonomously.
+- ONLY use AskUserQuestion when gathering requirements, QA info, or resolving genuine ambiguity about what the user wants.
+- Once the user approves a plan, execute ALL steps without per-step confirmation.
+- Sub-agents inherit these rules — they must also act without asking file-level permissions.
+
 Manage the full release process — version bumps, changelog generation, release notes, tagging, and pre-release validation. Works with any project using git.
 
 ## Step 0: Load Project Context
