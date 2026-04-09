@@ -27,6 +27,11 @@ git config --global alias.fetchAll '!git remote update && git status -uno'
 git config --global alias.fetchPull '!git fetch && git pull $(git config --get branch.$(git rev-parse --abbrev-ref HEAD).remote) $(git rev-parse --abbrev-ref HEAD)'
 git config --global alias.latest '!git log -1 --oneline && git branch --show-current && git describe --tags --abbrev=0 && git describe --tags'
 git config --global alias.last-commit "log -1 --pretty=format:'%C(yellow)%h%Creset %C(bold)%s%Creset%n%C(cyan)Branch:%Creset %D%n%C(green)Author:%Creset %an <%ae>%n%C(magenta)Date:%Creset %cd' --date=format:'%Y-%m-%d %H:%M:%S'"
+git config --global alias.remote-link '!f() { \
+  branch=$(git symbolic-ref --short -q HEAD || git name-rev --name-only HEAD | sed "s/^origin\///"); \
+  remote=$(git remote get-url origin); \
+  echo "${remote%.git}/tree/${branch}"; \
+}; f'
 ```
 
 ---
@@ -80,6 +85,36 @@ git latest        # last commit hash + current branch + latest tag/version
 
 git last-commit   # formatted view:
                   #   hash, message, branch, author, date
+```
+
+---
+
+## Remote branch link
+
+Print the GitHub (or any remote) URL for the **current branch** — works on normal branches and detached HEAD states.
+
+```sh
+git remote-link
+# https://github.com/sovware/directorist/tree/feature/payment-migration
+```
+
+### How it works
+
+| Step | What happens |
+|---|---|
+| `git symbolic-ref --short -q HEAD` | Gets the branch name on a normal checkout |
+| Fallback: `git name-rev --name-only HEAD` | Detects remote branch name even in detached HEAD state |
+| `sed "s/^origin\///"` | Strips the `origin/` prefix if present |
+| `${remote%.git}/tree/${branch}` | Joins remote URL + `/tree/<branch>` to build the final link |
+
+### Register the alias
+
+```sh
+git config --global alias.remote-link '!f() { \
+  branch=$(git symbolic-ref --short -q HEAD || git name-rev --name-only HEAD | sed "s/^origin\///"); \
+  remote=$(git remote get-url origin); \
+  echo "${remote%.git}/tree/${branch}"; \
+}; f'
 ```
 
 ---
