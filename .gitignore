@@ -1,3 +1,4 @@
 # Local settings (user-specific permissions, paths)
 .claude/settings.local.json
 CLAUDE.md
+git-smart-output.json
