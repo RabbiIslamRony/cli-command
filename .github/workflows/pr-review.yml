@@ -1,0 +1,66 @@
+name: Claude Code Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+  pull_request_review_comment:
+    types: [created]
+  issue_comment:
+    types: [created]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.event.issue.number }}
+  cancel-in-progress: true
+
+jobs:
+  review:
+    if: |
+      (github.event_name == 'pull_request' && github.event.pull_request.draft == false) ||
+      (github.event_name == 'issue_comment' &&
+       github.event.issue.pull_request &&
+       contains(github.event.comment.body, '@claude')) ||
+      (github.event_name == 'pull_request_review_comment' &&
+       contains(github.event.comment.body, '@claude'))
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run Claude Code Review
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          prompt: |
+            Review this pull request thoroughly. This is a **Markdown-based CLI command library** for Claude Code — there is no compiled code, no PHP, no JS runtime.
+
+            Focus on:
+
+            1. **Prompt Quality**: Clear instructions, unambiguous steps, logical flow, no contradictions
+            2. **Command Structure**: Follows the project's command pattern — load context → gather requirements → parallel analysis → generate output → execute with approval
+            3. **Consistency**:
+               - File naming uses kebab-case (e.g., `git-gen.md`, `pr-gen.md`)
+               - Commands reference `CLAUDE.md` for project context
+               - Tool usage follows Claude Code conventions (AskUserQuestion, Agent, Bash, etc.)
+            4. **Documentation Accuracy**:
+               - Code examples are correct and runnable
+               - Git aliases use valid syntax
+               - Referenced tools and commands actually exist in Claude Code
+            5. **Best Practices**:
+               - No hardcoded paths or user-specific values in shared commands
+               - Commands are language/stack agnostic where intended
+               - Markdown formatting is clean and renders correctly
+               - No duplicate content across commands
+            6. **PR Hygiene**:
+               - All PRs should target `development` branch (not `main`)
+               - Commit messages follow casual imperative style
+
+            Provide specific, actionable feedback. Reference file paths and line numbers.
+            Prioritize issues by severity: critical > major > minor > suggestion.
+            Be concise but thorough. Skip praise for obvious things.
