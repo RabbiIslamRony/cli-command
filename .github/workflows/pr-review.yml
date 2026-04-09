@@ -37,6 +37,7 @@ jobs:
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          allowed_tools: "Bash,mcp__github__create_pull_request_review,mcp__github__add_pull_request_review_comment,mcp__github__create_issue_comment,mcp__github__get_pull_request,mcp__github__list_pull_request_files"
           prompt: |
             Review this pull request thoroughly. This is a **Markdown-based CLI command library** for Claude Code — there is no compiled code, no PHP, no JS runtime.
 
