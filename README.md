@@ -37,6 +37,7 @@ cp -r cli-command/.claude/commands/ ~/.claude/commands/
 |---------|-------------|
 | `/context` | Auto-scan project to extract tech stack, structure, and conventions. Generates `CLAUDE.md` — automatically loaded by Claude Code in every conversation. |
 | `/plan` | Analyze codebase and create a feature implementation plan with architecture, dependencies, and risk assessment. |
+| `/lookup` | Deep-dive into any feature or module — finds core files, maps dependencies, traces data flow, and compiles a structured knowledge report. |
 
 ### Design
 
@@ -100,6 +101,11 @@ cp -r cli-command/.claude/commands/ ~/.claude/commands/
 **Last check before merge?**
 ```
 /check         ← Validates all files, returns PASS/FAIL
+```
+
+**Need to understand a feature?**
+```
+/lookup search ← Deep-dive into how search works, its files, dependencies & data flow
 ```
 
 **App feeling slow?**

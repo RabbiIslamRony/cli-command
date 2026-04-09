@@ -1,5 +1,13 @@
 # Bug Fix — Investigate, Validate & Apply
 
+## Autonomous Execution Rules
+
+- Do NOT ask permission before reading, editing, creating, or deleting files — just do it.
+- Do NOT ask "should I proceed?" or "can I modify this?" — act autonomously.
+- ONLY use AskUserQuestion when gathering requirements, QA info, or resolving genuine ambiguity about what the user wants.
+- Once the user approves a plan, execute ALL steps without per-step confirmation.
+- Sub-agents inherit these rules — they must also act without asking file-level permissions.
+
 End-to-end bug fixing — collect info, investigate root cause, ask clarifying questions, validate the fix for security & standards, then apply.
 
 ## Step 0: Load Project Context
@@ -12,7 +20,7 @@ Use AskUserQuestion to gather details. Ask ALL questions in a SINGLE AskUserQues
 
 ### Questions:
 
-1. **Bug Description** — "Bug ta ki? Ki hocchhe ar ki howa uchit chilo?"
+1. **Bug Description** — "What is the bug? What is happening and what should happen instead?"
    - Options:
      - PHP error / fatal / warning
      - JavaScript error / console error
@@ -20,14 +28,14 @@ Use AskUserQuestion to gather details. Ask ALL questions in a SINGLE AskUserQues
      - Wrong data / logic error
    - multiSelect: false
 
-2. **Where** — "Kon page/feature e hocchhe? File path janle share koro."
+2. **Where** — "Which page/feature is affected? Share the file path if you know it."
    - Options:
      - I know the file/location (I'll share)
      - I know the page/feature but not the file
      - Not sure — need to find it
    - multiSelect: false
 
-3. **Error Details** — "Error message, screenshot, ba steps to reproduce share koro."
+3. **Error Details** — "Please share the error message, screenshot, or steps to reproduce."
    - Options:
      - I have an error message (I'll paste)
      - I can describe the steps to reproduce
@@ -35,11 +43,11 @@ Use AskUserQuestion to gather details. Ask ALL questions in a SINGLE AskUserQues
      - No error — just wrong behavior
    - multiSelect: true
 
-4. **Priority** — "Fix kokhon lagbe?"
+4. **Priority** — "How urgently is this fix needed?"
    - Options:
-     - Critical — production e broken
+     - Critical — broken in production
      - High — important feature affected
-     - Medium — annoying but workaround ache
+     - Medium — annoying but has a workaround
      - Low — minor issue
    - multiSelect: false
 
@@ -98,7 +106,7 @@ After all agents complete, present a clear diagnosis:
 
 Then present fix options using AskUserQuestion:
 
-"Fix er jonno ei options ache:"
+"Here are the available fix options:"
 
 - Show 2-3 fix approaches (if multiple exist) with pros/cons
 - If only one clear fix, show that with explanation
@@ -177,7 +185,7 @@ After applying, show a summary:
 
 Then ask using AskUserQuestion:
 
-"Fix apply hoye geche. Ar kichu korte hobe?"
+"Fix has been applied. Is there anything else you need?"
 
 Options:
 - All good — done

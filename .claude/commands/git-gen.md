@@ -1,5 +1,13 @@
 # Git Smart — Perfect Commit, Branch & PR Naming
 
+## Autonomous Execution Rules
+
+- Do NOT ask permission before reading, editing, creating, or deleting files — just do it.
+- Do NOT ask "should I proceed?" or "can I modify this?" — act autonomously.
+- ONLY use AskUserQuestion when gathering requirements, QA info, or resolving genuine ambiguity about what the user wants.
+- Once the user approves a plan, execute ALL steps without per-step confirmation.
+- Sub-agents inherit these rules — they must also act without asking file-level permissions.
+
 Analyze your current changes and generate the perfect commit message, branch name, PR title, and PR description. Uses multiple agents to deeply understand what changed and why.
 
 ## Step 1: Gather Context
@@ -8,7 +16,7 @@ Use AskUserQuestion to collect context. Do NOT skip.
 
 ### Question Set 1 — What do you need?
 
-1. **Task** — "Ki generate korte chao?"
+1. **Task** — "What would you like to generate?"
    - Options:
      - Commit message only
      - Branch name only
@@ -16,7 +24,7 @@ Use AskUserQuestion to collect context. Do NOT skip.
      - Everything (branch + commit + PR) (Recommended)
    - multiSelect: false
 
-2. **Change Type** — "Ei change ta ki dhoroner?"
+2. **Change Type** — "What type of change is this?"
    - Options:
      - New feature (feat)
      - Bug fix (fix)
@@ -28,7 +36,7 @@ Use AskUserQuestion to collect context. Do NOT skip.
      - Security fix (security)
    - multiSelect: false
 
-3. **Ticket/Issue Reference** — "Kono issue number ba ticket ache? (e.g., #123, JIRA-456)"
+3. **Ticket/Issue Reference** — "Is there a related issue number or ticket? (e.g., #123, JIRA-456)"
    - Options:
      - Yes (I'll provide it)
      - No ticket/issue
@@ -199,6 +207,9 @@ Fixes #[Fill from Step 1 ticket reference, or leave blank]
 ## Checklist
 
 - [ ] My code follows the [WordPress coding standards](https://make.wordpress.org/core/handbook/best-practices/coding-standards/)
+
+## Additional Context
+> Do you want to add any additional context for reviewers? (e.g., screenshots, design references, deployment notes, or anything else worth mentioning)
 ```
 
 **Template Rules:**
@@ -225,7 +236,7 @@ Fixes #[Fill from Step 1 ticket reference, or leave blank]
 
 Present all generated options and ask:
 
-"Kon gula use korbe? Kisu edit korte chaile bolo."
+"Which options would you like to use? Let me know if you'd like to edit anything."
 
 Options:
 - "Use all as-is"
@@ -249,7 +260,7 @@ This file allows `/ship` to pick up the output even in a different session.
 
 Then ask:
 
-"Apnar hoye ki ami ai changes gula apply korbo? (git add, format, commit, branch, push)"
+"Would you like me to apply these changes on your behalf? (git add, format, commit, branch, push)"
 
 Options:
 - **Yes** — Proceed with the full apply workflow (Step 5 below)
@@ -265,7 +276,7 @@ git add .
 ```
 
 ### 5.2 — Format code (QA checkpoint)
-Ask the user: "yarn format & composer format run korbo?"
+Ask the user: "Should I run yarn format & composer format?"
 - If **Yes**: Run `yarn format` first, then `composer format`
 - If **No**: Skip to 5.3
 - If either command fails, show the error and ask the user how to proceed
@@ -296,7 +307,7 @@ git branch -r
 ```
 
 Ask the user:
-"Kon remote branch-e push korbo? Nicher theke select koro ba custom deo."
+"Which remote branch should I push to? Select from below or provide a custom one."
 
 Show options based on detected remotes (e.g., `origin/<branch-name>`, other remotes if they exist).
 Options should include:

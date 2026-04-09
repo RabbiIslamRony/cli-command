@@ -1,5 +1,13 @@
 # PR Export — Generate PR Title & Description from Changes
 
+## Autonomous Execution Rules
+
+- Do NOT ask permission before reading, editing, creating, or deleting files — just do it.
+- Do NOT ask "should I proceed?" or "can I modify this?" — act autonomously.
+- ONLY use AskUserQuestion when gathering requirements, QA info, or resolving genuine ambiguity about what the user wants.
+- Once the user approves a plan, execute ALL steps without per-step confirmation.
+- Sub-agents inherit these rules — they must also act without asking file-level permissions.
+
 Analyze specific commits or current running changes and export a PR title and description to `.claude/git-smart-output.json`.
 
 ## Step 1: Gather Context
@@ -8,14 +16,14 @@ Use AskUserQuestion to collect context. Do NOT skip.
 
 ### Questions
 
-1. **Source** — "Kon changes theke PR generate korbo?"
+1. **Source** — "Which changes should I generate the PR from?"
    - Options:
      - Specific commit(s) (I'll provide hash)
      - Running changes (unstaged + staged diff)
      - Last commit on current branch
    - multiSelect: false
 
-2. **Change Type** — "Ei change ta ki dhoroner?"
+2. **Change Type** — "What type of change is this?"
    - Options:
      - New feature (feat)
      - Bug fix (fix)
@@ -29,7 +37,7 @@ Use AskUserQuestion to collect context. Do NOT skip.
 
 If user selected "Specific commit(s)", ask:
 
-3. **Commit Hashes** — "Commit hash gula deo (comma separated, e.g. abc1234, def5678)"
+3. **Commit Hashes** — "Please provide the commit hash(es) (comma separated, e.g. abc1234, def5678)"
    - Free text input (use Other option)
    - Options:
      - Let me type the hash(es)
@@ -121,6 +129,9 @@ Fixes #
 
 ## Checklist
 - [ ] My code follows the [WordPress coding standards](https://make.wordpress.org/core/handbook/best-practices/coding-standards/)
+
+## Additional Context
+> Do you want to add any additional context for reviewers? (e.g., screenshots, design references, deployment notes, or anything else worth mentioning)
 ```
 
 **Template Rules:**
@@ -139,7 +150,7 @@ Fixes #
 
 Present the PR title options and full description to the user.
 
-Ask: "Kisu edit korte chaile bolo, nahole export kore dibo."
+Ask: "Let me know if you'd like to edit anything, otherwise I'll export it."
 
 Options:
 - Use as-is
@@ -157,4 +168,4 @@ After user confirms, save to `.claude/git-smart-output.json`:
 }
 ```
 
-Confirm: "PR title and description `.claude/git-smart-output.json`-e save hoise. `/ship` diye apply korte parbe."
+Confirm: "PR title and description have been saved to `.claude/git-smart-output.json`. You can apply them using `/ship`."

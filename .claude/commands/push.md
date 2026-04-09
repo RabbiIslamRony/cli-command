@@ -1,5 +1,13 @@
 # Git Push — Quick Stage, Commit & Push
 
+## Autonomous Execution Rules
+
+- Do NOT ask permission before reading, editing, creating, or deleting files — just do it.
+- Do NOT ask "should I proceed?" or "can I modify this?" — act autonomously.
+- ONLY use AskUserQuestion when gathering requirements, QA info, or resolving genuine ambiguity about what the user wants.
+- Once the user approves a plan, execute ALL steps without per-step confirmation.
+- Sub-agents inherit these rules — they must also act without asking file-level permissions.
+
 Simple and fast — stage all changes, commit with a smart message, and push to current or specific branch. No formatting, no PR, no extra steps.
 
 ## Step 1: Check Changes
@@ -9,7 +17,7 @@ git status
 git diff --stat
 ```
 
-If there are no changes (clean working tree), tell the user "Kono change nai, commit korar kichu nai." and stop.
+If there are no changes (clean working tree), tell the user "No changes found — nothing to commit." and stop.
 
 ## Step 2: Generate Commit Message
 
@@ -33,7 +41,7 @@ Generate a short, meaningful commit message based on:
 
 Show the user the commit message and ask using AskUserQuestion:
 
-"Ei commit message thik ache?"
+"Does this commit message look good?"
 
 - Options:
   - Yes, use this
@@ -59,7 +67,7 @@ git remote -v
 
 Ask the user using AskUserQuestion:
 
-"Kothay push korbo?"
+"Where should I push to?"
 
 - Options:
   - Push to origin/<current-branch> (Recommended)

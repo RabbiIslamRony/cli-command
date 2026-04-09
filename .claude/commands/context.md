@@ -1,5 +1,13 @@
 # Project Context Extractor
 
+## Autonomous Execution Rules
+
+- Do NOT ask permission before reading, editing, creating, or deleting files — just do it.
+- Do NOT ask "should I proceed?" or "can I modify this?" — act autonomously.
+- ONLY use AskUserQuestion when gathering requirements, QA info, or resolving genuine ambiguity about what the user wants.
+- Once the user approves a plan, execute ALL steps without per-step confirmation.
+- Sub-agents inherit these rules — they must also act without asking file-level permissions.
+
 Extract and save full project context to `CLAUDE.md` at the project root. Claude Code automatically loads `CLAUDE.md` in every conversation, so all commands get project context without needing to read a separate file.
 
 ## Step 0: Check Existing Context
@@ -7,7 +15,7 @@ Extract and save full project context to `CLAUDE.md` at the project root. Claude
 First check if `CLAUDE.md` already exists at the project root.
 
 - If it exists, read it and ask using AskUserQuestion:
-  "CLAUDE.md already ache. Ki korbo?"
+  "CLAUDE.md already exists. What would you like to do?"
   - Options:
     - Update it (re-scan + keep manual notes)
     - Overwrite completely (fresh start)
@@ -55,7 +63,7 @@ Scan for:
 
 After auto-scan completes, ask using AskUserQuestion (single call, multiple questions):
 
-1. **Project Purpose** — "Ei project ta ki kore? One-line description dao."
+1. **Project Purpose** — "What does this project do? Provide a one-line description."
    - Options:
      - WordPress plugin (I'll describe)
      - WordPress theme
@@ -63,7 +71,7 @@ After auto-scan completes, ask using AskUserQuestion (single call, multiple ques
      - Library/package
    - multiSelect: false
 
-2. **Target Audience** — "Ei project kader jonno?"
+2. **Target Audience** — "Who is this project for?"
    - Options:
      - End users (non-technical)
      - Developers
@@ -71,7 +79,7 @@ After auto-scan completes, ask using AskUserQuestion (single call, multiple ques
      - Mix — both users and developers
    - multiSelect: false
 
-3. **Team Size** — "Ei project e kojon kaj kore?"
+3. **Team Size** — "How many people work on this project?"
    - Options:
      - Solo developer (just me)
      - Small team (2-5)
@@ -79,7 +87,7 @@ After auto-scan completes, ask using AskUserQuestion (single call, multiple ques
      - Large team (15+)
    - multiSelect: false
 
-4. **Deploy Process** — "Deploy kivabe hoy?"
+4. **Deploy Process** — "How is deployment handled?"
    - Options:
      - WordPress.org SVN
      - GitHub release → auto deploy
@@ -173,9 +181,9 @@ Summary:
 - Build: [build tool + command]
 - Deploy: [method]
 
-Claude Code ekhon automatically ei context load korbe prottek conversation-e.
-Kono command ke alada kore context read korte hobe na.
-/context abar run korle update korte parbe.
+Claude Code will now automatically load this context in every conversation.
+No command needs to read the context separately.
+Run /context again to update it.
 ```
 
 ## Important Rules

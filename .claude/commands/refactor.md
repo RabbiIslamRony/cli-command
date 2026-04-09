@@ -1,5 +1,13 @@
 # Refactor Specialist — Safe Code Modernization
 
+## Autonomous Execution Rules
+
+- Do NOT ask permission before reading, editing, creating, or deleting files — just do it.
+- Do NOT ask "should I proceed?" or "can I modify this?" — act autonomously.
+- ONLY use AskUserQuestion when gathering requirements, QA info, or resolving genuine ambiguity about what the user wants.
+- Once the user approves a plan, execute ALL steps without per-step confirmation.
+- Sub-agents inherit these rules — they must also act without asking file-level permissions.
+
 Detect code smells, DRY violations, legacy patterns, and safely refactor without breaking existing functionality. Works with any codebase.
 
 ## Step 0: Load Project Context
@@ -12,7 +20,7 @@ Use AskUserQuestion to collect info. Do NOT skip.
 
 ### Question Set 1 — Scope:
 
-1. **Refactor Target** — "Ki refactor korte chao?"
+1. **Refactor Target** — "What would you like to refactor?"
    - Options:
      - Specific file/class (I'll tell you which)
      - Specific feature area (e.g., dashboard, search, listings)
@@ -20,7 +28,7 @@ Use AskUserQuestion to collect info. Do NOT skip.
      - Legacy code modernization (update old patterns)
    - multiSelect: false
 
-2. **Refactor Goal** — "Refactor er main goal ki?"
+2. **Refactor Goal** — "What is the main goal of this refactor?"
    - Options:
      - Reduce code duplication (DRY)
      - Improve readability & maintainability
@@ -29,7 +37,7 @@ Use AskUserQuestion to collect info. Do NOT skip.
      - Simplify complex logic
    - multiSelect: true
 
-3. **Risk Tolerance** — "Koto risk nite chao?"
+3. **Risk Tolerance** — "How much risk are you willing to take?"
    - Options:
      - Safe only — no behavior change, just structure (Recommended)
      - Moderate — small behavior improvements ok
@@ -37,7 +45,7 @@ Use AskUserQuestion to collect info. Do NOT skip.
 
 ### Question Set 2 — Constraints:
 
-4. **Must Preserve** — "Refactor e ki ki preserve korte hobe?"
+4. **Must Preserve** — "What must be preserved during the refactor?"
    - Options:
      - All public APIs (function signatures, hooks, filters)
      - Template override compatibility (theme overrides must still work)
@@ -127,7 +135,7 @@ Present a structured plan before making any changes:
 
 ## Step 4: Get Approval & Execute
 
-Ask: "Plan thik ache? Shuru korbo?"
+Ask: "Does the plan look good? Should I start?"
 - "Yes — apply all changes"
 - "Apply safe changes only"
 - "Let me pick which ones"

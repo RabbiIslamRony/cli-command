@@ -1,5 +1,13 @@
 # Feature Planner — Smart Implementation Planning
 
+## Autonomous Execution Rules
+
+- Do NOT ask permission before reading, editing, creating, or deleting files — just do it.
+- Do NOT ask "should I proceed?" or "can I modify this?" — act autonomously.
+- ONLY use AskUserQuestion when gathering requirements, QA info, or resolving genuine ambiguity about what the user wants.
+- Once the user approves a plan, execute ALL steps without per-step confirmation.
+- Sub-agents inherit these rules — they must also act without asking file-level permissions.
+
 Before writing any code, deeply analyze the project and create the best possible implementation plan. This command gathers requirements from the user, studies the codebase architecture, and delivers a detailed action plan with improvement suggestions.
 
 ## Step 0: Load Project Context
@@ -12,26 +20,26 @@ Use AskUserQuestion to collect info from the user. Do NOT skip any question.
 
 ### Question Set 1 — Feature Basics:
 
-1. **Feature Type** — "Ki dhoroner kaj korte chao?"
-   - Options: New feature (notun kichu add), Improve existing feature, Bug fix, Refactor/Cleanup
+1. **Feature Type** — "What type of work do you want to do?"
+   - Options: New feature (add something new), Improve existing feature, Bug fix, Refactor/Cleanup
    - multiSelect: false
 
-2. **Feature Description** — "Feature ta ki? Ektu details bolo."
+2. **Feature Description** — "What is the feature? Please describe it in detail."
    - This is critical — if the user's answer is vague, ask follow-up questions to clarify scope, expected behavior, and edge cases.
 
-3. **Priority** — "Ei feature er priority ki?"
+3. **Priority** — "What is the priority of this feature?"
    - Options: Critical (blocking release), High (must have this sprint), Medium (nice to have), Low (backlog/future)
 
 ### Question Set 2 — Scope & Constraints:
 
-4. **Affected Areas** — "Ei feature kon kon area te impact korbe?"
+4. **Affected Areas** — "Which areas will this feature impact?"
    - Options: Frontend only (templates, SCSS, JS), Backend only (PHP classes, AJAX, DB), Full stack (frontend + backend), Admin panel only
    - multiSelect: true
 
-5. **Has Reference?** — "Kono reference design, PR, issue, or example ache?"
+5. **Has Reference?** — "Do you have any reference design, PR, issue, or example?"
    - Options: Figma/design file, GitHub issue link, Reference from another plugin/site, No reference — plan from scratch
 
-6. **Breaking Changes** — "Ei feature ki existing functionality break korte pare?"
+6. **Breaking Changes** — "Could this feature break any existing functionality?"
    - Options: No breaking changes expected, Might affect existing templates, Might affect existing data/DB, Not sure — need analysis
 
 ## Step 2: Launch Analysis Agents (Parallel)
@@ -133,7 +141,7 @@ After all agents complete, synthesize findings into a structured plan.
 
 After presenting the plan, ALWAYS check for improvement opportunities. Ask the user:
 
-"Ei feature er sathe related kisu improvement er scope dekhtechi. Eishob ki korte chao?"
+"I've identified some improvement opportunities related to this feature. Would you like to include any of these?"
 
 Present improvements as a checklist using AskUserQuestion with multiSelect: true:
 
@@ -153,7 +161,7 @@ Only suggest improvements that are genuinely useful — don't suggest unnecessar
 
 After presenting the plan and improvement suggestions, ask:
 
-"Plan ta ki thik ache? Kisu change korte chaile bolo. Ready hole implementation shuru korbo."
+"Does the plan look good? Let me know if you'd like to change anything. Once you're ready, I'll start the implementation."
 
 Options:
 - "Looks good — start implementation"
